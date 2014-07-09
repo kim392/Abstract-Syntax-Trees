@@ -189,6 +189,7 @@ void first_set(int, int);
     uint64_t capacity;
     uint64_t first_;
     uint64_t last_;
+    uint64_t size_;
     void resize();
     // you probably need more members...
 };

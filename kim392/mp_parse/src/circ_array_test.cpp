@@ -26,19 +26,24 @@ int main()
     arr.pop_front();
     assert(arr[0] == 2);
 
-
     arr.pop_back();
     assert(arr[arr.size() - 1] == 6);
     arr.pop_back();
     assert(arr[arr.size() - 1] == 5);
     assert(arr.size() == 4);
-/*
     arr.erase(2);
+
 
     assert(arr[0] == 2);
     assert(arr[1] == 3);
     assert(arr[2] == 5);
     assert(arr.size() == 3);
-*/
+
+//////////////////////////////
+arr.pop_back();
+arr.pop_back();
+arr.pop_back();
+assert(arr.size()==0);
+
     return 0;
 }

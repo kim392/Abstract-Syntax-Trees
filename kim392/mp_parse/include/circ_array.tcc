@@ -7,22 +7,30 @@
 #include <stdexcept>
 #include <iostream>
 #include "circ_array.h"
+#include <vector>
 
 namespace cs225
 {
 
 template <class T>
 circ_array<T>::circ_array()
-    : capacity{0}
 {
-    arr_ = nullptr;
+	size_ = 0;
+	capacity = 0;
+	arr_ = nullptr;
+	first_=0;
+	last_=0;
 }
 
 template <class T>
 circ_array<T>::circ_array(uint64_t size)
     : capacity{size}, first_{0}, last_{size-1}
 {
-    arr_ = std::move(std::unique_ptr<T[]> (new T[size]));
+    arr_ = std::move(std::unique_ptr<T[]> (new T[capacity]));
+size_ = size;//    arr_ = std::move(std::unique_ptr<T[]> (new T[size]));
+  //  std::vector<std::unique_ptr<T>> p3;
+//    std::unique_ptr<T> ptr(new T);
+ //   p3.push_back(std::move(ptr));
 }
 
 template <class T>
@@ -32,11 +40,13 @@ circ_array<T>::circ_array(const circ_array& other)
     arr_ = std::move(std::unique_ptr<T[]> (new T[capacity]));
     for(uint64_t i = 0; i<capacity; i++)
 	arr_[i] = other.arr_[i]; 
+size_ = other.size_;
+    
 }
 
 template <class T>
 circ_array<T>::circ_array(circ_array&& other)
-    :arr_{nullptr}, capacity{0}, first_{0}, last_{0}
+    :arr_{nullptr}, capacity{0}, first_{0}, last_{0}, size_{0}
 {
     std::swap(*this, other);
 }
@@ -54,7 +64,7 @@ circ_array<T>::~circ_array() = default;
 template <class T>
 void circ_array<T>::swap(circ_array& other)
 {
-    other.arr_.swap(arr_);
+    other.arr_.swap(arr_);std::swap(size_,other.size_);
     std::swap(other.capacity, capacity);
     std::swap(other.first_, first_);
     std::swap(other.last_, last_);
@@ -63,49 +73,51 @@ void circ_array<T>::swap(circ_array& other)
 template <class T>
 const T& circ_array<T>::operator[](uint64_t idx) const
 {
-     return arr_[idx];
+int x = idx + first_;
+
+	if(x >= capacity)
+	{     x= x%capacity;
+	}
+
+	return arr_[x];	
+
+
+
+
+
 }
 
 template <class T>
 T& circ_array<T>::operator[](uint64_t idx)
 {
-    return arr_[idx];
+	if (idx>=size_) throw std::out_of_range{"invalid index"};
+	int x = idx + first_;
+	if(x >= capacity)
+	{     x= x%capacity;
+	}
+	return arr_[x];	
 }
 
 template <class T>
 const T& circ_array<T>::at(uint64_t idx) const
 {
-    if(idx >= capacity)
-	throw std::out_of_range{"invalid index"};
-    else if (first_ < last_)
-    {
-	if(idx < first_ || idx > last_)
-	    throw std::out_of_range{"invalid index"};
-    }
-    else if(last_ < first_)
-    {
-	if(idx < first_ && idx > last_)
-	    throw std::out_of_range{"invalid index"};
-    }
-    return arr_[idx];
+if (idx>=size_) throw std::out_of_range{"invalid index"};
+	int x = idx + first_;
+	if(x >= capacity)
+	{     x = x%capacity;
+	}
+	return arr_[x];	
 }
 
 template <class T>
 T& circ_array<T>::at(uint64_t idx)
 {
-    if(idx >= capacity)
-		throw std::out_of_range{"invalid index"};
-    else if (first_ < last_)
-    {
-        if(idx < first_ || idx > last_)
-            throw std::out_of_range{"invalid index"};
-    }
-    else if(last_ < first_)
-    {
-        if(idx < first_ && idx > last_)
-            throw std::out_of_range{"invalid index"};
-    }
-    return arr_[idx];
+if (idx>=size_) throw std::out_of_range{"invalid index"};
+	int x = idx + first_;
+	if(x >= capacity)
+	{     x = x%capacity;
+	}
+	return arr_[x];	
 }
 
 template <class T>
@@ -136,40 +148,38 @@ void circ_array<T>::push_front(const T& elem)
     {
 	resize();
     }
-    std::unique_ptr<T[]> tmp = std::unique_ptr<T[]> (new T[capacity]);
-    tmp[0] = elem;
-    for(uint64_t i=0; i<capacity; i++)
+    if(first_ == 0 && last_ < capacity -1)
     {
-	tmp[i+1] = arr_[i];
+	    arr_[capacity - 1] = elem;
+	    first_ = capacity - 1;
+	    size_ = size_+1;
+	    return;
     }
-    arr_.swap(tmp);
-    last_++;
 }
 
 template <class T>
 void circ_array<T>::first_set(int i, int j)
 {
     std::cout<< "first: " << first_ << " changed to: ";
-     first_ = i;
-     last_ = j;
+    first_ = i;
+    last_ = j;
     std::cout<< first_ << std::endl;
 }
 
 template <class T>
 void circ_array<T>::push_front(T&& elem)
 {
-if((first_==0 && last_ == capacity-1) || (first_-1==last_))
+    if((first_==0 && last_ == capacity-1) || (first_-1==last_))
     {
         resize();
     }
-    std::unique_ptr<T[]> tmp = std::unique_ptr<T[]> (new T[capacity]);
-    tmp[0] = elem;
-    for(uint64_t i=0; i<capacity; i++)
+    if(first_ == 0 && last_ < capacity -1)
     {
-        tmp[i+1] = arr_[i];
+        arr_[capacity - 1] = elem;
+        first_ = capacity - 1;
+        size_ = size_+1;
+        return;
     }
-    arr_.swap(tmp);
-    last_++;
 }
 
 template <class T>
@@ -179,85 +189,103 @@ void circ_array<T>::push_back(const T& elem)
     {
         resize();
     }
-    std::unique_ptr<T[]> tmp = std::unique_ptr<T[]> (new T[capacity]);
-    for(uint64_t i=0; i<capacity; i++)
-    {
-        tmp[i] = arr_[i];
-    }
     last_++;
-    tmp[last_] = elem;
-    arr_.swap(tmp);
+    arr_[last_]=elem;
+    size_ = size_+1;
 }
 
 template <class T>
 void circ_array<T>::push_back(T&& elem)
 {
-if((first_==0 && last_ == capacity-1) || (first_-1==last_))
+    if((first_==0 && last_ == capacity-1) || (first_-1==last_))
     {
         resize();
     }
-    std::unique_ptr<T[]> tmp = std::unique_ptr<T[]> (new T[capacity]);
-    for(uint64_t i=0; i<capacity; i++)
-    {
-        tmp[i] = arr_[i];
-    }
     last_++;
-    tmp[last_] = elem;
-    arr_.swap(tmp);
+    arr_[last_]=elem;
+    size_ = size_+1;
 }
 
 template <class T>
 void circ_array<T>::pop_front()
 {
-    std::unique_ptr<T[]> tmp(new T[capacity]);
-    for(int i=1; i<capacity; i++)
-    {
-	tmp[i-1] = arr_[i];
-    }
-    last_--;
-    arr_.swap(tmp);
+	if(first_ + 1 >= capacity)
+	{	first_=0;
+	}
+	else
+	{
+		first_++;
+	}
+		size_--;
 }
 
 template <class T>
 void circ_array<T>::pop_back()
 {
-    std::unique_ptr<T[]> tmp(new T[capacity]);
-    for(int i=0; i<last_; i++)
-    {
-	tmp[i] = arr_[i];
-    }
-    last_--;
-    arr_.swap(tmp);
+     if(last_-1 < 0)
+     {	
+	last_ = capacity -1;
+     }
+     else
+     {
+	last_--;
+     }
+	size_--;
+std::cout << "first: " << first_ << ", last: " << last_ << std::endl;
 }
 
 template <class T>
 void circ_array<T>::erase(uint64_t idx)
 {
-    /// @todo mp_parse.1
+    int x = idx + first_;
+    if(x >= size_)
+	x %= size_;
+    int j = 0;
+    std::unique_ptr<T[]> tmp = std::unique_ptr<T[]> (new T[capacity]);
+    if(first_ < last_)
+    {
+	for(int i = 0; i <= size_; i++)
+	{
+	    if(i!=x)
+	    {
+		tmp[j] = arr_[i];
+		j++;
+	    }
+	}
+    }
+    arr_.swap(tmp);
+    last_--;
+    size_--;
 }
 
 template <class T>
 uint64_t circ_array<T>::size() const
-{
+{/*
     uint64_t counter = 1;
     if(first_<last_)
     {
         for(uint64_t i = first_; i<last_; i++)
 	    counter++;
     }
-    else
+    else if(last_ < first_)
     {
         for(uint64_t i = first_; i<capacity; i++)
 	    counter++;
-	for(uint64_t i = 0; i<first_; i++)
+	for(uint64_t i = 0; i<last_; i++)
 	    counter++;
     }
+    else
+    {
+	counter = 0;
+    }
     return counter;
+*/
+	return size_;
 }
 
 template <class T>
 bool circ_array<T>::empty() const
 {
- //    return first_==last_;
+    return size_ == 0;
 }
 }
