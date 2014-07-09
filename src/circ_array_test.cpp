@@ -21,24 +21,24 @@ int main()
     for (uint64_t i = 0; i < arr.size(); ++i)
         assert(arr.at(i) == i);
     assert(arr.size() == 8);
-
     arr.pop_front();
     assert(arr[0] == 1);
     arr.pop_front();
     assert(arr[0] == 2);
+
 
     arr.pop_back();
     assert(arr[arr.size() - 1] == 6);
     arr.pop_back();
     assert(arr[arr.size() - 1] == 5);
     assert(arr.size() == 4);
-
+/*
     arr.erase(2);
 
     assert(arr[0] == 2);
     assert(arr[1] == 3);
     assert(arr[2] == 5);
     assert(arr.size() == 3);
-
+*/
     return 0;
 }
