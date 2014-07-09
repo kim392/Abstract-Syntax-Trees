@@ -25,7 +25,6 @@ class circ_array
      * Constructs an array with 0 capacity.
      */
     circ_array();
-
     /**
      * Constructs an array with the given capacity.
      *
@@ -114,6 +113,19 @@ class circ_array
      * @param elem The element to be inserted
      */
     void push_front(const T& elem);
+    
+
+
+
+
+
+void first_set(int, int);
+
+
+
+
+
+
 
     /**
      * Inserts an element at the front of the array. Please use move
@@ -174,9 +186,13 @@ class circ_array
      * Storage for the array.
      */
     std::unique_ptr<T[]> arr_;
-
+    uint64_t capacity;
+    uint64_t first_;
+    uint64_t last_;
+    void resize();
     // you probably need more members...
 };
 }
 #include "circ_array.tcc"
 #endif
+
