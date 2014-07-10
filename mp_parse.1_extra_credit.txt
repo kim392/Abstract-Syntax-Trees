@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp_parse.1 at 2014-07-09 23:30:39
+Testing mp_parse.1 at 2014-07-10 13:29:21
 
-"It always takes longer than you expect, even when you take into account Hofstadter's Law." ~ Hofstadter's Law
+"I'm not saying he's evil incarnate based on that fact alone; I've always known it." ~ REDACTED
 
 Setting up test environment...
 cp: cannot stat `/dev/shm/geigle1/su14/monad/su14-cs225/kim392/mp_parse/include/node.h': No such file or directory
@@ -27,15 +27,15 @@ cp: cannot stat `/dev/shm/geigle1/su14/monad/su14-cs225/kim392/mp_parse/src/bina
 cp: cannot stat `/dev/shm/geigle1/su14/monad/su14-cs225/kim392/mp_parse/src/unary_op.cpp': No such file or directory
 Compiling...
 ================================================================
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
      ^
-unit_tests.cpp:66:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+unit_tests.cpp:68:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
     circ_array<int> arr;
                     ^
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
@@ -43,26 +43,26 @@ include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized afte
 include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     : size_{size}, capacity{size}, first_{0}, last_{size-1}
       ^
-unit_tests.cpp:82:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+unit_tests.cpp:86:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
     circ_array<int> arr{2};
                     ^
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:30:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
       ^
-unit_tests.cpp:113:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+unit_tests.cpp:119:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
     circ_array<int> copy{arr};
                     ^
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
      ^
-unit_tests.cpp:258:22: note: in instantiation of member function 'cs225::circ_array<char>::circ_array' requested here
+unit_tests.cpp:272:22: note: in instantiation of member function 'cs225::circ_array<char>::circ_array' requested here
     circ_array<char> a;
                      ^
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
@@ -70,150 +70,24 @@ include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized afte
 include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
      ^
-unit_tests.cpp:308:30: note: in instantiation of member function 'cs225::circ_array<move_counter>::circ_array' requested here
+unit_tests.cpp:330:30: note: in instantiation of member function 'cs225::circ_array<move_counter>::circ_array' requested here
     circ_array<move_counter> arr;
                              ^
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
                ^
-include/circ_array.tcc:188:15: error: invalid operands to binary expression ('ostream' (aka 'basic_ostream<char>') and 'move_counter')
-    std::cout << elem << std::endl;
-    ~~~~~~~~~ ^  ~~~~
-unit_tests.cpp:317:9: note: in instantiation of member function 'cs225::circ_array<move_counter>::push_back' requested here
-    arr.push_back(move_counter{});
-        ^
-/class/cs225/llvm/include/c++/v1/ostream:195:20: note: candidate function not viable: no known conversion from 'move_counter' to 'const void *' for 1st argument; take the address of the argument with &
-    basic_ostream& operator<<(const void* __p);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:179:20: note: candidate function not viable: no known conversion from 'move_counter' to 'std::__1::basic_ostream<char, std::__1::char_traits<char> > &(*)(std::__1::basic_ostream<char, std::__1::char_traits<char> > &)' for 1st argument
-    basic_ostream& operator<<(basic_ostream& (*__pf)(basic_ostream&));
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:180:20: note: candidate function not viable: no known conversion from 'move_counter' to 'basic_ios<char_type, traits_type> &(*)(basic_ios<char_type, traits_type> &)' for 1st argument
-    basic_ostream& operator<<(basic_ios<char_type, traits_type>&
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:182:20: note: candidate function not viable: no known conversion from 'move_counter' to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
-    basic_ostream& operator<<(ios_base& (*__pf)(ios_base&));
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:183:20: note: candidate function not viable: no known conversion from 'move_counter' to 'bool' for 1st argument
-    basic_ostream& operator<<(bool __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:184:20: note: candidate function not viable: no known conversion from 'move_counter' to 'short' for 1st argument
-    basic_ostream& operator<<(short __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:185:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned short' for 1st argument
-    basic_ostream& operator<<(unsigned short __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:186:20: note: candidate function not viable: no known conversion from 'move_counter' to 'int' for 1st argument
-    basic_ostream& operator<<(int __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:187:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned int' for 1st argument
-    basic_ostream& operator<<(unsigned int __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:188:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long' for 1st argument
-    basic_ostream& operator<<(long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:189:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned long' for 1st argument
-    basic_ostream& operator<<(unsigned long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:190:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long long' for 1st argument
-    basic_ostream& operator<<(long long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:191:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned long long' for 1st argument
-    basic_ostream& operator<<(unsigned long long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:192:20: note: candidate function not viable: no known conversion from 'move_counter' to 'float' for 1st argument
-    basic_ostream& operator<<(float __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:193:20: note: candidate function not viable: no known conversion from 'move_counter' to 'double' for 1st argument
-    basic_ostream& operator<<(double __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:194:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long double' for 1st argument
-    basic_ostream& operator<<(long double __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:196:20: note: candidate function not viable: no known conversion from 'move_counter' to 'basic_streambuf<char_type, traits_type> *' for 1st argument
-    basic_ostream& operator<<(basic_streambuf<char_type, traits_type>* __sb);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:773:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'char' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, char __cn)
-^
-/class/cs225/llvm/include/c++/v1/ostream:806:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:813:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'signed char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, signed char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:820:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'unsigned char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, unsigned char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:834:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const char *' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, const char* __strn)
-^
-/class/cs225/llvm/include/c++/v1/ostream:880:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:887:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const signed char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const signed char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:895:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const unsigned char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const unsigned char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1074:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const std::__1::error_code' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __ec)
-^
-/class/cs225/llvm/include/c++/v1/ostream:766:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'move_counter')
-operator<<(basic_ostream<_CharT, _Traits>& __os, _CharT __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:827:1: note: candidate template ignored: could not match 'const _CharT *' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, const _CharT* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1065:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os,
-^
-/class/cs225/llvm/include/c++/v1/ostream:1051:5: note: candidate template ignored: disabled by 'enable_if' [with _Stream = std::__1::basic_ostream<char, std::__1::char_traits<char> > &, _Tp = move_counter]
-    !is_lvalue_reference<_Stream>::value &&
-    ^
-/class/cs225/llvm/include/c++/v1/ostream:1082:1: note: candidate template ignored: could not match 'shared_ptr<type-parameter-0-2>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, shared_ptr<_Yp> const& __p)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1089:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, const bitset<_Size>& __x)
-^
-8 warnings and 1 error generated.
-unit_tests.cpp:69:5: error: use of undeclared identifier 'assert_exception'
-    assert_exception<std::out_of_range>([&]()
-    ^
-unit_tests.cpp:69:39: error: expected '(' for function-style cast or type construction
-    assert_exception<std::out_of_range>([&]()
-                     ~~~~~~~~~~~~~~~~~^
-unit_tests.cpp:74:5: error: use of undeclared identifier 'assert_exception'
-    assert_exception<std::out_of_range>([&]()
-    ^
-unit_tests.cpp:74:39: error: expected '(' for function-style cast or type construction
-    assert_exception<std::out_of_range>([&]()
-                     ~~~~~~~~~~~~~~~~~^
-unit_tests.cpp:92:5: error: use of undeclared identifier 'assert_exception'
-    assert_exception<std::out_of_range>([&]()
-    ^
-unit_tests.cpp:92:39: error: expected '(' for function-style cast or type construction
-    assert_exception<std::out_of_range>([&]()
-                     ~~~~~~~~~~~~~~~~~^
-unit_tests.cpp:97:5: error: use of undeclared identifier 'assert_exception'
-    assert_exception<std::out_of_range>([&]()
-    ^
-unit_tests.cpp:97:39: error: expected '(' for function-style cast or type construction
-    assert_exception<std::out_of_range>([&]()
-                     ~~~~~~~~~~~~~~~~~^
-In file included from unit_tests.cpp:60:
+8 warnings generated.
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
      ^
-unit_tests.cpp:66:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+unit_tests.cpp:68:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
     circ_array<int> arr;
                     ^
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
@@ -221,45 +95,26 @@ include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized afte
 include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     : size_{size}, capacity{size}, first_{0}, last_{size-1}
       ^
-unit_tests.cpp:82:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+unit_tests.cpp:86:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
     circ_array<int> arr{2};
                     ^
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:30:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
       ^
-unit_tests.cpp:113:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+unit_tests.cpp:119:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
     circ_array<int> copy{arr};
                     ^
-4 warnings and 8 errors generated.
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{size}, capacity{size}, first_{0}, last_{size-1}
-      ^
-unit_tests.cpp:233:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> a{1};
-                    ^
-1 warning generated.
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{size}, capacity{size}, first_{0}, last_{size-1}
-      ^
-unit_tests.cpp:245:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> a{1};
-                    ^
-1 warning generated.
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
      ^
-unit_tests.cpp:258:22: note: in instantiation of member function 'cs225::circ_array<char>::circ_array' requested here
+unit_tests.cpp:272:22: note: in instantiation of member function 'cs225::circ_array<char>::circ_array' requested here
     circ_array<char> a;
                      ^
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
@@ -267,531 +122,42 @@ include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized afte
 include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
      ^
-unit_tests.cpp:272:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> a;
-                    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-               ^
-include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-     ^
-unit_tests.cpp:308:30: note: in instantiation of member function 'cs225::circ_array<move_counter>::circ_array' requested here
+unit_tests.cpp:330:30: note: in instantiation of member function 'cs225::circ_array<move_counter>::circ_array' requested here
     circ_array<move_counter> arr;
                              ^
-In file included from unit_tests.cpp:60:
+In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:197:
 include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
     :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
                ^
-include/circ_array.tcc:188:15: error: invalid operands to binary expression ('ostream' (aka 'basic_ostream<char>') and 'move_counter')
-    std::cout << elem << std::endl;
-    ~~~~~~~~~ ^  ~~~~
-unit_tests.cpp:317:9: note: in instantiation of member function 'cs225::circ_array<move_counter>::push_back' requested here
-    arr.push_back(move_counter{});
-        ^
-/class/cs225/llvm/include/c++/v1/ostream:195:20: note: candidate function not viable: no known conversion from 'move_counter' to 'const void *' for 1st argument; take the address of the argument with &
-    basic_ostream& operator<<(const void* __p);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:179:20: note: candidate function not viable: no known conversion from 'move_counter' to 'std::__1::basic_ostream<char, std::__1::char_traits<char> > &(*)(std::__1::basic_ostream<char, std::__1::char_traits<char> > &)' for 1st argument
-    basic_ostream& operator<<(basic_ostream& (*__pf)(basic_ostream&));
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:180:20: note: candidate function not viable: no known conversion from 'move_counter' to 'basic_ios<char_type, traits_type> &(*)(basic_ios<char_type, traits_type> &)' for 1st argument
-    basic_ostream& operator<<(basic_ios<char_type, traits_type>&
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:182:20: note: candidate function not viable: no known conversion from 'move_counter' to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
-    basic_ostream& operator<<(ios_base& (*__pf)(ios_base&));
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:183:20: note: candidate function not viable: no known conversion from 'move_counter' to 'bool' for 1st argument
-    basic_ostream& operator<<(bool __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:184:20: note: candidate function not viable: no known conversion from 'move_counter' to 'short' for 1st argument
-    basic_ostream& operator<<(short __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:185:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned short' for 1st argument
-    basic_ostream& operator<<(unsigned short __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:186:20: note: candidate function not viable: no known conversion from 'move_counter' to 'int' for 1st argument
-    basic_ostream& operator<<(int __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:187:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned int' for 1st argument
-    basic_ostream& operator<<(unsigned int __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:188:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long' for 1st argument
-    basic_ostream& operator<<(long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:189:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned long' for 1st argument
-    basic_ostream& operator<<(unsigned long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:190:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long long' for 1st argument
-    basic_ostream& operator<<(long long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:191:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned long long' for 1st argument
-    basic_ostream& operator<<(unsigned long long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:192:20: note: candidate function not viable: no known conversion from 'move_counter' to 'float' for 1st argument
-    basic_ostream& operator<<(float __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:193:20: note: candidate function not viable: no known conversion from 'move_counter' to 'double' for 1st argument
-    basic_ostream& operator<<(double __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:194:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long double' for 1st argument
-    basic_ostream& operator<<(long double __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:196:20: note: candidate function not viable: no known conversion from 'move_counter' to 'basic_streambuf<char_type, traits_type> *' for 1st argument
-    basic_ostream& operator<<(basic_streambuf<char_type, traits_type>* __sb);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:773:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'char' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, char __cn)
-^
-/class/cs225/llvm/include/c++/v1/ostream:806:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:813:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'signed char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, signed char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:820:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'unsigned char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, unsigned char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:834:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const char *' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, const char* __strn)
-^
-/class/cs225/llvm/include/c++/v1/ostream:880:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:887:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const signed char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const signed char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:895:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const unsigned char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const unsigned char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1074:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const std::__1::error_code' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __ec)
-^
-/class/cs225/llvm/include/c++/v1/ostream:766:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'move_counter')
-operator<<(basic_ostream<_CharT, _Traits>& __os, _CharT __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:827:1: note: candidate template ignored: could not match 'const _CharT *' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, const _CharT* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1065:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os,
-^
-/class/cs225/llvm/include/c++/v1/ostream:1082:1: note: candidate template ignored: could not match 'shared_ptr<type-parameter-0-2>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, shared_ptr<_Yp> const& __p)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1089:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, const bitset<_Size>& __x)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1051:5: note: candidate template ignored: disabled by 'enable_if' [with _Stream = std::__1::basic_ostream<char, std::__1::char_traits<char> > &, _Tp = move_counter]
-    !is_lvalue_reference<_Stream>::value &&
-    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{size}, capacity{size}, first_{0}, last_{size-1}
-      ^
-unit_tests.cpp:324:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> arr{3};
-                    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:30:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
-      ^
-unit_tests.cpp:405:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> copy{arr};
-                    ^
-8 warnings and 1 error generated.
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-     ^
-unit_tests.cpp:66:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> arr;
-                    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-               ^
-include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{size}, capacity{size}, first_{0}, last_{size-1}
-      ^
-unit_tests.cpp:82:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> arr{2};
-                    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:30:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
-      ^
-unit_tests.cpp:113:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> copy{arr};
-                    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-     ^
-unit_tests.cpp:258:22: note: in instantiation of member function 'cs225::circ_array<char>::circ_array' requested here
-    circ_array<char> a;
-                     ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-               ^
-include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-     ^
-unit_tests.cpp:308:30: note: in instantiation of member function 'cs225::circ_array<move_counter>::circ_array' requested here
-    circ_array<move_counter> arr;
-                             ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-               ^
-include/circ_array.tcc:188:15: error: invalid operands to binary expression ('ostream' (aka 'basic_ostream<char>') and 'move_counter')
-    std::cout << elem << std::endl;
-    ~~~~~~~~~ ^  ~~~~
-unit_tests.cpp:317:9: note: in instantiation of member function 'cs225::circ_array<move_counter>::push_back' requested here
-    arr.push_back(move_counter{});
-        ^
-/class/cs225/llvm/include/c++/v1/ostream:195:20: note: candidate function not viable: no known conversion from 'move_counter' to 'const void *' for 1st argument; take the address of the argument with &
-    basic_ostream& operator<<(const void* __p);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:179:20: note: candidate function not viable: no known conversion from 'move_counter' to 'std::__1::basic_ostream<char, std::__1::char_traits<char> > &(*)(std::__1::basic_ostream<char, std::__1::char_traits<char> > &)' for 1st argument
-    basic_ostream& operator<<(basic_ostream& (*__pf)(basic_ostream&));
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:180:20: note: candidate function not viable: no known conversion from 'move_counter' to 'basic_ios<char_type, traits_type> &(*)(basic_ios<char_type, traits_type> &)' for 1st argument
-    basic_ostream& operator<<(basic_ios<char_type, traits_type>&
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:182:20: note: candidate function not viable: no known conversion from 'move_counter' to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
-    basic_ostream& operator<<(ios_base& (*__pf)(ios_base&));
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:183:20: note: candidate function not viable: no known conversion from 'move_counter' to 'bool' for 1st argument
-    basic_ostream& operator<<(bool __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:184:20: note: candidate function not viable: no known conversion from 'move_counter' to 'short' for 1st argument
-    basic_ostream& operator<<(short __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:185:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned short' for 1st argument
-    basic_ostream& operator<<(unsigned short __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:186:20: note: candidate function not viable: no known conversion from 'move_counter' to 'int' for 1st argument
-    basic_ostream& operator<<(int __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:187:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned int' for 1st argument
-    basic_ostream& operator<<(unsigned int __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:188:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long' for 1st argument
-    basic_ostream& operator<<(long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:189:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned long' for 1st argument
-    basic_ostream& operator<<(unsigned long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:190:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long long' for 1st argument
-    basic_ostream& operator<<(long long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:191:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned long long' for 1st argument
-    basic_ostream& operator<<(unsigned long long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:192:20: note: candidate function not viable: no known conversion from 'move_counter' to 'float' for 1st argument
-    basic_ostream& operator<<(float __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:193:20: note: candidate function not viable: no known conversion from 'move_counter' to 'double' for 1st argument
-    basic_ostream& operator<<(double __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:194:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long double' for 1st argument
-    basic_ostream& operator<<(long double __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:196:20: note: candidate function not viable: no known conversion from 'move_counter' to 'basic_streambuf<char_type, traits_type> *' for 1st argument
-    basic_ostream& operator<<(basic_streambuf<char_type, traits_type>* __sb);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:773:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'char' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, char __cn)
-^
-/class/cs225/llvm/include/c++/v1/ostream:806:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:813:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'signed char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, signed char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:820:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'unsigned char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, unsigned char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:834:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const char *' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, const char* __strn)
-^
-/class/cs225/llvm/include/c++/v1/ostream:880:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:887:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const signed char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const signed char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:895:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const unsigned char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const unsigned char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1074:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const std::__1::error_code' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __ec)
-^
-/class/cs225/llvm/include/c++/v1/ostream:766:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'move_counter')
-operator<<(basic_ostream<_CharT, _Traits>& __os, _CharT __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1065:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os,
-^
-/class/cs225/llvm/include/c++/v1/ostream:1082:1: note: candidate template ignored: could not match 'shared_ptr<type-parameter-0-2>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, shared_ptr<_Yp> const& __p)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1089:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, const bitset<_Size>& __x)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1051:5: note: candidate template ignored: disabled by 'enable_if' [with _Stream = std::__1::basic_ostream<char, std::__1::char_traits<char> > &, _Tp = move_counter]
-    !is_lvalue_reference<_Stream>::value &&
-    ^
-/class/cs225/llvm/include/c++/v1/ostream:827:1: note: candidate template ignored: could not match 'const _CharT *' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, const _CharT* __str)
-^
-8 warnings and 1 error generated.
-unit_tests.cpp:69:5: error: use of undeclared identifier 'assert_exception'
-    assert_exception<std::out_of_range>([&]()
-    ^
-unit_tests.cpp:69:39: error: expected '(' for function-style cast or type construction
-    assert_exception<std::out_of_range>([&]()
-                     ~~~~~~~~~~~~~~~~~^
-unit_tests.cpp:74:5: error: use of undeclared identifier 'assert_exception'
-    assert_exception<std::out_of_range>([&]()
-    ^
-unit_tests.cpp:74:39: error: expected '(' for function-style cast or type construction
-    assert_exception<std::out_of_range>([&]()
-                     ~~~~~~~~~~~~~~~~~^
-unit_tests.cpp:92:5: error: use of undeclared identifier 'assert_exception'
-    assert_exception<std::out_of_range>([&]()
-    ^
-unit_tests.cpp:92:39: error: expected '(' for function-style cast or type construction
-    assert_exception<std::out_of_range>([&]()
-                     ~~~~~~~~~~~~~~~~~^
-unit_tests.cpp:97:5: error: use of undeclared identifier 'assert_exception'
-    assert_exception<std::out_of_range>([&]()
-    ^
-unit_tests.cpp:97:39: error: expected '(' for function-style cast or type construction
-    assert_exception<std::out_of_range>([&]()
-                     ~~~~~~~~~~~~~~~~~^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-     ^
-unit_tests.cpp:66:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> arr;
-                    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-               ^
-include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{size}, capacity{size}, first_{0}, last_{size-1}
-      ^
-unit_tests.cpp:82:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> arr{2};
-                    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:30:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
-      ^
-unit_tests.cpp:113:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> copy{arr};
-                    ^
-4 warnings and 8 errors generated.
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{size}, capacity{size}, first_{0}, last_{size-1}
-      ^
-unit_tests.cpp:233:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> a{1};
-                    ^
-1 warning generated.
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{size}, capacity{size}, first_{0}, last_{size-1}
-      ^
-unit_tests.cpp:245:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> a{1};
-                    ^
-1 warning generated.
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-     ^
-unit_tests.cpp:258:22: note: in instantiation of member function 'cs225::circ_array<char>::circ_array' requested here
-    circ_array<char> a;
-                     ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-               ^
-include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-     ^
-unit_tests.cpp:272:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> a;
-                    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-               ^
-include/circ_array.tcc:17:6: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-     ^
-unit_tests.cpp:308:30: note: in instantiation of member function 'cs225::circ_array<move_counter>::circ_array' requested here
-    circ_array<move_counter> arr;
-                             ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:17:16: warning: field 'capacity' will be initialized after field 'arr_' [-Wreorder]
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
-               ^
-include/circ_array.tcc:188:15: error: invalid operands to binary expression ('ostream' (aka 'basic_ostream<char>') and 'move_counter')
-    std::cout << elem << std::endl;
-    ~~~~~~~~~ ^  ~~~~
-unit_tests.cpp:317:9: note: in instantiation of member function 'cs225::circ_array<move_counter>::push_back' requested here
-    arr.push_back(move_counter{});
-        ^
-/class/cs225/llvm/include/c++/v1/ostream:195:20: note: candidate function not viable: no known conversion from 'move_counter' to 'const void *' for 1st argument; take the address of the argument with &
-    basic_ostream& operator<<(const void* __p);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:179:20: note: candidate function not viable: no known conversion from 'move_counter' to 'std::__1::basic_ostream<char, std::__1::char_traits<char> > &(*)(std::__1::basic_ostream<char, std::__1::char_traits<char> > &)' for 1st argument
-    basic_ostream& operator<<(basic_ostream& (*__pf)(basic_ostream&));
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:180:20: note: candidate function not viable: no known conversion from 'move_counter' to 'basic_ios<char_type, traits_type> &(*)(basic_ios<char_type, traits_type> &)' for 1st argument
-    basic_ostream& operator<<(basic_ios<char_type, traits_type>&
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:182:20: note: candidate function not viable: no known conversion from 'move_counter' to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
-    basic_ostream& operator<<(ios_base& (*__pf)(ios_base&));
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:183:20: note: candidate function not viable: no known conversion from 'move_counter' to 'bool' for 1st argument
-    basic_ostream& operator<<(bool __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:184:20: note: candidate function not viable: no known conversion from 'move_counter' to 'short' for 1st argument
-    basic_ostream& operator<<(short __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:185:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned short' for 1st argument
-    basic_ostream& operator<<(unsigned short __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:186:20: note: candidate function not viable: no known conversion from 'move_counter' to 'int' for 1st argument
-    basic_ostream& operator<<(int __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:187:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned int' for 1st argument
-    basic_ostream& operator<<(unsigned int __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:188:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long' for 1st argument
-    basic_ostream& operator<<(long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:189:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned long' for 1st argument
-    basic_ostream& operator<<(unsigned long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:190:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long long' for 1st argument
-    basic_ostream& operator<<(long long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:191:20: note: candidate function not viable: no known conversion from 'move_counter' to 'unsigned long long' for 1st argument
-    basic_ostream& operator<<(unsigned long long __n);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:192:20: note: candidate function not viable: no known conversion from 'move_counter' to 'float' for 1st argument
-    basic_ostream& operator<<(float __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:193:20: note: candidate function not viable: no known conversion from 'move_counter' to 'double' for 1st argument
-    basic_ostream& operator<<(double __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:194:20: note: candidate function not viable: no known conversion from 'move_counter' to 'long double' for 1st argument
-    basic_ostream& operator<<(long double __f);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:196:20: note: candidate function not viable: no known conversion from 'move_counter' to 'basic_streambuf<char_type, traits_type> *' for 1st argument
-    basic_ostream& operator<<(basic_streambuf<char_type, traits_type>* __sb);
-                   ^
-/class/cs225/llvm/include/c++/v1/ostream:773:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'char' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, char __cn)
-^
-/class/cs225/llvm/include/c++/v1/ostream:806:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:813:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'signed char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, signed char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:820:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'unsigned char' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, unsigned char __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:834:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const char *' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, const char* __strn)
-^
-/class/cs225/llvm/include/c++/v1/ostream:880:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:887:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const signed char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const signed char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:895:1: note: candidate function [with _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const unsigned char *' for 2nd argument
-operator<<(basic_ostream<char, _Traits>& __os, const unsigned char* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1074:1: note: candidate function [with _CharT = char, _Traits = std::__1::char_traits<char>] not viable: no known conversion from 'move_counter' to 'const std::__1::error_code' for 2nd argument
-operator<<(basic_ostream<_CharT, _Traits>& __os, const error_code& __ec)
-^
-/class/cs225/llvm/include/c++/v1/ostream:766:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'move_counter')
-operator<<(basic_ostream<_CharT, _Traits>& __os, _CharT __c)
-^
-/class/cs225/llvm/include/c++/v1/ostream:827:1: note: candidate template ignored: could not match 'const _CharT *' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, const _CharT* __str)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1065:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os,
-^
-/class/cs225/llvm/include/c++/v1/ostream:1082:1: note: candidate template ignored: could not match 'shared_ptr<type-parameter-0-2>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, shared_ptr<_Yp> const& __p)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1089:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'move_counter'
-operator<<(basic_ostream<_CharT, _Traits>& __os, const bitset<_Size>& __x)
-^
-/class/cs225/llvm/include/c++/v1/ostream:1051:5: note: candidate template ignored: disabled by 'enable_if' [with _Stream = std::__1::basic_ostream<char, std::__1::char_traits<char> > &, _Tp = move_counter]
-    !is_lvalue_reference<_Stream>::value &&
-    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:23:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{size}, capacity{size}, first_{0}, last_{size-1}
-      ^
-unit_tests.cpp:324:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> arr{3};
-                    ^
-In file included from unit_tests.cpp:60:
-In file included from include/circ_array.h:197:
-include/circ_array.tcc:30:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
-    : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
-      ^
-unit_tests.cpp:405:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
-    circ_array<int> copy{arr};
-                    ^
-8 warnings and 1 error generated.
+8 warnings generated.
 
 
 Running tests...
 ================================================================
-circ_const_at  . . . [5 pts] - passed
-circ_const_subscript [5 pts] - passed
+circ_empty  . . . . . . [3 pts] - passed
+circ_sized  . . . . . . [3 pts] - passed
+circ_copy_ctor (asan) . [5 pts] - passed
+circ_move_ctor (asan) . [5 pts] - FAILED
+circ_copy_assign (asan) [5 pts] - passed
+circ_move_assign (asan) [5 pts] - FAILED
+circ_swap . . . . . . . [5 pts] - passed
+circ_const_subscript  . [5 pts] - passed
+circ_const_at . . . . . [5 pts] - passed
+circ_push_front . . . . [5 pts] - FAILED
+circ_push_front_many  . [5 pts] - FAILED
+circ_push_back  . . . . [5 pts] - FAILED
+circ_push_back_many . . [5 pts] - FAILED
+circ_push_front_move  . [5 pts] - FAILED
+circ_push_back_move . . [5 pts] - FAILED
+circ_pop_front  . . . . [5 pts] - passed
+circ_pop_back . . . . . [5 pts] - passed
+circ_erase_1  . . . . . [8 pts] - passed
+circ_erase_2  . . . . . [8 pts] - FAILED
+circ_weird_copy_ctor  . [3 pts] - FAILED
 
 
 Total score...
 ================================================================
-TOTAL SCORE: 10
+TOTAL SCORE: 49
 
