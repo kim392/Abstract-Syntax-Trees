@@ -114,19 +114,6 @@ class circ_array
      */
     void push_front(const T& elem);
     
-
-
-
-
-
-void first_set(int, int);
-
-
-
-
-
-
-
     /**
      * Inserts an element at the front of the array. Please use move
      * semantics for this overload! Must run in \f$O(1)\f$ time.
@@ -180,7 +167,6 @@ void first_set(int, int);
      * @return whether the array contains any user-specified elements
      */
     bool empty() const;
-
   private:
     /**
      * Storage for the array.

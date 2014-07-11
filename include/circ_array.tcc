@@ -14,8 +14,9 @@ namespace cs225
 
 template <class T>
 circ_array<T>::circ_array()
-    :size_{0}, capacity{0}, arr_{nullptr}, first_{0}, last_{0}
+    :size_{0}, capacity{1}, first_{0}, last_{0}
 {
+    arr_ = std::move(std::unique_ptr<T[]> (new T[capacity]));
 }
 
 template <class T>
@@ -38,7 +39,11 @@ template <class T>
 circ_array<T>::circ_array(circ_array&& other)
     :arr_{nullptr}, capacity{0}, first_{0}, last_{0}, size_{0}
 {
-    std::swap(*this, other);
+   arr_.swap(other.arr_);
+    std::swap(first_, other.first_);
+    std::swap(last_, other.last_);
+    std::swap(capacity, other.capacity);
+    std::swap(size_, other.size_);
 }
 
 template <class T>
@@ -108,12 +113,12 @@ void circ_array<T>::resize()
     for(uint64_t i =first_; i<capacity; i++)
     {
 	j++;
-	tmp[j] = arr_[i];
+	tmp[j] = std::move(arr_[i]);
     }
     for(uint64_t i=0; i<first_; i++)
     {
 	j++;
-	tmp[j] = arr_[i];
+	tmp[j] = std::move(arr_[i]);
     }
     last_ = j;
     first_ = 0;
@@ -129,65 +134,79 @@ void circ_array<T>::push_front(const T& elem)
     if(first_ == 0)
     {
 	first_ = capacity-1;
+	arr_[capacity-1] = elem;
+	size_ = size_ + 1;
     }
-    else
+    else if(first_>last_ && size_ < capacity)
     {
 	first_--;
+	arr_[first_] = elem;
+	size_++;
     }
-    arr_[first_] = elem;
-    size_++;
 }
 
 template <class T>
 void circ_array<T>::push_front(T&& elem)
 {
     if((first_==0 && last_ == capacity-1) || (first_-1==last_) || (size_ == capacity))
-        resize();
+	resize();
     if(first_ == 0)
     {
-        first_ = capacity-1;
-    } 
-    else
-    {
-        first_--;
+	first_ = capacity-1;
+	arr_[capacity-1] = std::move(elem);
+	size_ = size_ + 1;
     }
-    arr_[first_] = elem;
-    size_++;
+    else if(first_>last_ && size_ < capacity)
+    {
+	first_--;
+	arr_[first_] = std::move(elem);
+	size_++;
+    }
 }
+
+
+
+
 
 template <class T>
 void circ_array<T>::push_back(const T& elem)
 {
-    if((first_==0 && last_ == capacity-1) || (first_-1==last_))
+    if((first_==0 && last_ == capacity-1) || (first_-1==last_) || size_==capacity)
         resize();
     if(last_ == capacity-1)
     {
 	last_ = 0;
+	arr_[last_] = elem;
+	size_++;
     }
     else
     {
 	last_++;
+	arr_[last_] = elem;
+	size_++;
     }    
-    arr_[last_]=elem;
-    size_ = size_+1;
 }
 
 template <class T>
 void circ_array<T>::push_back(T&& elem)
 {
-    if((first_==0 && last_ == capacity-1) || (first_-1==last_))
+
+    if((first_==0 && last_ == capacity-1) || (first_-1==last_) || size_==capacity)
         resize();
     if(last_ == capacity-1)
     {
-        last_ = 0;
+	last_ = 0;
+	arr_[last_] = std::move(elem);
+	size_++;
+	return;
     }
-    else
+    if(first_==last_)
     {
-        last_++;
+	first_++;
     }
-    std::cout << elem << std::endl;
-    arr_[last_]=elem;
-    size_ = size_+1;
+	last_++;
+	arr_[last_] = std::move(elem);
+	size_++;
 }
 
 template <class T>
@@ -213,9 +232,13 @@ void circ_array<T>::pop_back()
 template <class T>
 void circ_array<T>::erase(uint64_t idx)
 {
+    if(idx < size_ || idx > -1)
+    {
     int x = idx + first_;
     if(x >= size_)
-	x %= size_;
+    {
+	x %= capacity;
+    }
     int j = 0;
     std::unique_ptr<T[]> tmp = std::unique_ptr<T[]> (new T[capacity]);
     if(first_ < last_)
@@ -226,6 +249,9 @@ void circ_array<T>::erase(uint64_t idx)
 		tmp[j] = arr_[i];
 		j++;
 	    }
+	arr_.swap(tmp);
+	last_--;
+	size_--;
     }
     else if(first_ > last_)
     {
@@ -241,14 +267,19 @@ void circ_array<T>::erase(uint64_t idx)
 		tmp[j] = arr_[i];
 		j++;
 	    }
+	arr_.swap(tmp);
+	first_ = 0;
+	last_--;
+	size_--;
     }
     else if(first_ == last_ && x == first_)
     {
 	tmp[0] = arr_[first_];
+	arr_.swap(tmp);
+	last_--;
+	size_--;
     }
-    arr_.swap(tmp);
-    last_--;
-    size_--;
+}
 }
 
 template <class T>
@@ -262,4 +293,5 @@ bool circ_array<T>::empty() const
 {
     return size_ == 0;
 }
+
 }
