@@ -1,0 +1,7 @@
+Monad Autograder
+Testing mp_parse at 2014-07-11 04:07:26
+
+"Television won't be able to hold on to any market it captures after the first six months. People will soon get tired of staring at a plywood box every night." ~ Darryl Zanuck, 20th Century Fox, 1946
+
+Setting up test environment...
+Error: /dev/shm/geigle1/su14/monad/su14-cs225/kim392/mp_parse/include/node.h does not exist.
