@@ -62,7 +62,7 @@ circ_array<T>::~circ_array() = default;
 template <class T>
 void circ_array<T>::swap(circ_array& other)
 {
-    other.arr_.swap(arr_);std::swap(size_,other.size_);
+   other.arr_.swap(arr_);std::swap(size_,other.size_);
     std::swap(other.capacity, capacity);
     std::swap(other.first_, first_);
     std::swap(other.last_, last_);
