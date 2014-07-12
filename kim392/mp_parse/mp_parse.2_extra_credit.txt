@@ -1,0 +1,151 @@
+Monad Autograder
+Testing mp_parse.2 at 2014-07-11 23:38:04
+
+"There are two ways of constructing a software design. One way is to make it so simple that there are obviously no deficiencies. And the other way is to make it so complicated that there are no obvious deficiencies." ~ C.A.R. Hoare
+
+Setting up test environment...
+Compiling...
+================================================================
+In file included from unit_tests.cpp:452:
+In file included from include/stack.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:86:7: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        if(x >= capacity)
+           ~ ^  ~~~~~~~~
+include/stack.tcc:22:12: note: in instantiation of member function 'cs225::circ_array<int>::operator[]' requested here
+    return arr_[arr_.size()];
+           ^
+unit_tests.cpp:471:14: note: in instantiation of member function 'cs225::stack<int>::top' requested here
+    ASSERT(s.top() == 1);
+             ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:452:
+In file included from include/stack.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:75:10: warning: comparison of integers of different signs: 'int' and 'const uint64_t' (aka 'const unsigned long') [-Wsign-compare]
+    if(x >= capacity)
+       ~ ^  ~~~~~~~~
+include/stack.tcc:15:12: note: in instantiation of member function 'cs225::circ_array<int>::operator[]' requested here
+    return arr_[arr_.size()];
+           ^
+unit_tests.cpp:501:14: note: in instantiation of member function 'cs225::stack<int>::top' requested here
+    ASSERT(c.top() == 1);
+             ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:452:
+In file included from include/stack.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:86:7: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        if(x >= capacity)
+           ~ ^  ~~~~~~~~
+include/stack.tcc:22:12: note: in instantiation of member function 'cs225::circ_array<move_counter>::operator[]' requested here
+    return arr_[arr_.size()];
+           ^
+unit_tests.cpp:510:14: note: in instantiation of member function 'cs225::stack<move_counter>::top' requested here
+    ASSERT(s.top().moved() > 0);
+             ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:452:
+In file included from include/stack.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:34:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
+    : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
+      ^
+include/stack.h:20:7: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+class stack
+      ^
+4 warnings generated.
+In file included from unit_tests.cpp:452:
+In file included from include/stack.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:86:7: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        if(x >= capacity)
+           ~ ^  ~~~~~~~~
+include/stack.tcc:22:12: note: in instantiation of member function 'cs225::circ_array<int>::operator[]' requested here
+    return arr_[arr_.size()];
+           ^
+unit_tests.cpp:471:14: note: in instantiation of member function 'cs225::stack<int>::top' requested here
+    ASSERT(s.top() == 1);
+             ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:452:
+In file included from include/stack.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:75:10: warning: comparison of integers of different signs: 'int' and 'const uint64_t' (aka 'const unsigned long') [-Wsign-compare]
+    if(x >= capacity)
+       ~ ^  ~~~~~~~~
+include/stack.tcc:15:12: note: in instantiation of member function 'cs225::circ_array<int>::operator[]' requested here
+    return arr_[arr_.size()];
+           ^
+unit_tests.cpp:501:14: note: in instantiation of member function 'cs225::stack<int>::top' requested here
+    ASSERT(c.top() == 1);
+             ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:452:
+In file included from include/stack.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:86:7: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        if(x >= capacity)
+           ~ ^  ~~~~~~~~
+include/stack.tcc:22:12: note: in instantiation of member function 'cs225::circ_array<move_counter>::operator[]' requested here
+    return arr_[arr_.size()];
+           ^
+unit_tests.cpp:510:14: note: in instantiation of member function 'cs225::stack<move_counter>::top' requested here
+    ASSERT(s.top().moved() > 0);
+             ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:452:
+In file included from include/stack.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:34:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
+    : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
+      ^
+include/stack.h:20:7: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+class stack
+      ^
+4 warnings generated.
+
+
+Running tests...
+================================================================
+stack_empty . . . . . . . . . [2 pts]  - passed
+stack_push_top  . . . . . . . [2 pts]  - passed
+stack_push_and_pop  . . . . . [5 pts]  - passed
+stack_top_const . . . . . . . [2 pts]  - passed
+stack_push_move . . . . . . . [3 pts]  - FAILED
+stack_memory (asan) . . . . . [3 pts]  - passed
+stack_push_amortized_constant [10 pts] - passed
+queue_empty . . . . . . . . . [2 pts]  - passed
+queue_push_front  . . . . . . [2 pts]  - passed
+queue_push_and_pop  . . . . . [5 pts]  - passed
+queue_front_const . . . . . . [2 pts]  - passed
+queue_push_move . . . . . . . [3 pts]  - FAILED
+queue_memory (asan) . . . . . [3 pts]  - passed
+queue_push_amortized_constant [10 pts] - passed
+ast_terminal  . . . . . . . . [4 pts]  - passed
+ast_unary_minus . . . . . . . [5 pts]  - passed
+ast_unary_plus  . . . . . . . [2 pts]  - passed
+ast_divide  . . . . . . . . . [5 pts]  - passed
+ast_exponent  . . . . . . . . [5 pts]  - passed
+ast_binary_minus  . . . . . . [5 pts]  - passed
+ast_binary_plus . . . . . . . [5 pts]  - passed
+ast_times . . . . . . . . . . [5 pts]  - passed
+ast_complex (asan)  . . . . . [10 pts] - passed
+
+
+Total score...
+================================================================
+TOTAL SCORE: 94
+
