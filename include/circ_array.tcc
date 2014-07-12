@@ -14,9 +14,12 @@ namespace cs225
 
 template <class T>
 circ_array<T>::circ_array()
-    :size_{0}, capacity{1}, first_{0}, last_{0}
 {
+    size_ = 0;
+    capacity = 1;
     arr_ = std::move(std::unique_ptr<T[]> (new T[capacity]));
+    first_ = 0;
+    last_ = 0;
 }
 
 template <class T>
