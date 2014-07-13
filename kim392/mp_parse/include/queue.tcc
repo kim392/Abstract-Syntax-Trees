@@ -30,7 +30,7 @@ void queue<T>::push(const T& elem)
 template <class T>
 void queue<T>::push(T&& elem)
 {
-    arr_.push_front(elem);
+    arr_.push_front(std::move(elem));
 }
 
 template <class T>
