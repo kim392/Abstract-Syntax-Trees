@@ -1,7 +1,216 @@
 Monad Autograder
-Testing mp_parse at 2014-07-11 04:07:26
+Testing mp_parse at 2014-07-12 23:34:50
 
-"Television won't be able to hold on to any market it captures after the first six months. People will soon get tired of staring at a plywood box every night." ~ Darryl Zanuck, 20th Century Fox, 1946
+"On two occasions, I have been asked [by members of Parliament], 'Pray, Mr. Babbage, if you put into the machine wrong figures, will the right answers come out?' I am not able to rightly apprehend the kind of confusion of ideas that could provoke such a question." ~ Charles Babbage
 
 Setting up test environment...
-Error: /dev/shm/geigle1/su14/monad/su14-cs225/kim392/mp_parse/include/node.h does not exist.
+Compiling...
+================================================================
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:106:7: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        if(x >= capacity)
+           ~ ^  ~~~~~~~~
+unit_tests.cpp:73:13: note: in instantiation of member function 'cs225::circ_array<int>::at' requested here
+        arr.at(0) = 1;
+            ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:27:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
+    : size_{size}, capacity{size}, first_{0}, last_{size-1}
+      ^
+unit_tests.cpp:86:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+    circ_array<int> arr{2};
+                    ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:34:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
+    : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
+      ^
+unit_tests.cpp:119:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+    circ_array<int> copy{arr};
+                    ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:75:10: warning: comparison of integers of different signs: 'int' and 'const uint64_t' (aka 'const unsigned long') [-Wsign-compare]
+    if(x >= capacity)
+       ~ ^  ~~~~~~~~
+unit_tests.cpp:252:13: note: in instantiation of member function 'cs225::circ_array<int>::operator[]' requested here
+    ASSERT(c[0] == 96);
+            ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:96:7: warning: comparison of integers of different signs: 'int' and 'const uint64_t' (aka 'const unsigned long') [-Wsign-compare]
+        if(x >= capacity)
+           ~ ^  ~~~~~~~~
+unit_tests.cpp:264:14: note: in instantiation of member function 'cs225::circ_array<int>::at' requested here
+    ASSERT(c.at(0) == 47);
+             ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:238:27: warning: comparison of integers of different signs: 'uint64_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
+    if(idx < size_ || idx > -1)
+                      ~~~ ^ ~~
+unit_tests.cpp:395:9: note: in instantiation of member function 'cs225::circ_array<int>::erase' requested here
+    arr.erase(5);
+        ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:241:10: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+    if(x >= size_)
+       ~ ^  ~~~~~
+include/circ_array.tcc:249:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        for(int i = 0; i <= size_; i++)
+                       ~ ^  ~~~~~
+include/circ_array.tcc:261:24: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        for(int i = first_; i < capacity; i++)
+                            ~ ^ ~~~~~~~~
+include/circ_array.tcc:267:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        for(int i = 0; i <= last_; i++)
+                       ~ ^  ~~~~~
+include/circ_array.tcc:278:34: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+    else if(first_ == last_ && x == first_)
+                               ~ ^  ~~~~~~
+11 warnings generated.
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:106:7: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        if(x >= capacity)
+           ~ ^  ~~~~~~~~
+unit_tests.cpp:73:13: note: in instantiation of member function 'cs225::circ_array<int>::at' requested here
+        arr.at(0) = 1;
+            ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:27:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
+    : size_{size}, capacity{size}, first_{0}, last_{size-1}
+      ^
+unit_tests.cpp:86:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+    circ_array<int> arr{2};
+                    ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:34:7: warning: field 'size_' will be initialized after field 'capacity' [-Wreorder]
+    : size_{other.size_}, capacity{other.capacity}, first_{other.first_}, last_{other.last_}
+      ^
+unit_tests.cpp:119:21: note: in instantiation of member function 'cs225::circ_array<int>::circ_array' requested here
+    circ_array<int> copy{arr};
+                    ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:75:10: warning: comparison of integers of different signs: 'int' and 'const uint64_t' (aka 'const unsigned long') [-Wsign-compare]
+    if(x >= capacity)
+       ~ ^  ~~~~~~~~
+unit_tests.cpp:252:13: note: in instantiation of member function 'cs225::circ_array<int>::operator[]' requested here
+    ASSERT(c[0] == 96);
+            ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:96:7: warning: comparison of integers of different signs: 'int' and 'const uint64_t' (aka 'const unsigned long') [-Wsign-compare]
+        if(x >= capacity)
+           ~ ^  ~~~~~~~~
+unit_tests.cpp:264:14: note: in instantiation of member function 'cs225::circ_array<int>::at' requested here
+    ASSERT(c.at(0) == 47);
+             ^
+./proxy.h:297:9: note: expanded from macro 'ASSERT'
+                if (!(expr))                               \
+                      ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:238:27: warning: comparison of integers of different signs: 'uint64_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
+    if(idx < size_ || idx > -1)
+                      ~~~ ^ ~~
+unit_tests.cpp:395:9: note: in instantiation of member function 'cs225::circ_array<int>::erase' requested here
+    arr.erase(5);
+        ^
+In file included from unit_tests.cpp:62:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:241:10: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+    if(x >= size_)
+       ~ ^  ~~~~~
+include/circ_array.tcc:249:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        for(int i = 0; i <= size_; i++)
+                       ~ ^  ~~~~~
+include/circ_array.tcc:261:24: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        for(int i = first_; i < capacity; i++)
+                            ~ ^ ~~~~~~~~
+include/circ_array.tcc:267:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+        for(int i = 0; i <= last_; i++)
+                       ~ ^  ~~~~~
+include/circ_array.tcc:278:34: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+    else if(first_ == last_ && x == first_)
+                               ~ ^  ~~~~~~
+11 warnings generated.
+
+
+Running tests...
+================================================================
+circ_empty  . . . . . . . . . [1 pts] - passed
+circ_sized  . . . . . . . . . [1 pts] - passed
+circ_copy_ctor (asan) . . . . [2 pts] - passed
+circ_move_ctor (asan) . . . . [2 pts] - passed
+circ_copy_assign (asan) . . . [2 pts] - passed
+circ_move_assign (asan) . . . [2 pts] - passed
+circ_swap . . . . . . . . . . [2 pts] - passed
+circ_const_subscript  . . . . [2 pts] - passed
+circ_const_at . . . . . . . . [2 pts] - passed
+circ_push_front . . . . . . . [2 pts] - passed
+circ_push_front_many  . . . . [2 pts] - passed
+circ_push_back  . . . . . . . [2 pts] - passed
+circ_push_back_many . . . . . [2 pts] - passed
+circ_push_front_move  . . . . [2 pts] - passed
+circ_push_back_move . . . . . [2 pts] - passed
+circ_pop_front  . . . . . . . [2 pts] - passed
+circ_pop_back . . . . . . . . [2 pts] - passed
+circ_erase_1  . . . . . . . . [3 pts] - passed
+circ_erase_2  . . . . . . . . [3 pts] - FAILED
+circ_weird_copy_ctor  . . . . [1 pts] - FAILED
+stack_empty . . . . . . . . . [1 pts] - passed
+stack_push_top  . . . . . . . [1 pts] - FAILED
+stack_push_and_pop  . . . . . [1 pts] - passed
+stack_top_const . . . . . . . [1 pts] - FAILED
+stack_push_move . . . . . . . [1 pts] - passed
+stack_memory (asan) . . . . . [1 pts] - passed
+stack_push_amortized_constant [1 pts] - FAILED
+queue_empty . . . . . . . . . [1 pts] - passed
+queue_push_front  . . . . . . [1 pts] - passed
+queue_push_and_pop  . . . . . [1 pts] - passed
+queue_front_const . . . . . . [1 pts] - passed
+queue_push_move . . . . . . . [1 pts] - passed
+queue_memory (asan) . . . . . [1 pts] - passed
+queue_push_amortized_constant [1 pts] - passed
+ast_terminal  . . . . . . . . [1 pts] - passed
+ast_unary_minus . . . . . . . [1 pts] - passed
+ast_unary_plus  . . . . . . . [1 pts] - passed
+ast_divide  . . . . . . . . . [1 pts] - passed
+ast_exponent  . . . . . . . . [1 pts] - passed
+ast_binary_minus  . . . . . . [1 pts] - passed
+ast_binary_plus . . . . . . . [1 pts] - passed
+ast_times . . . . . . . . . . [1 pts] - passed
+ast_complex (asan)  . . . . . [3 pts] - passed
+parser_plus . . . . . . . . . [1 pts] - FAILED
+parser_extra_ops  . . . . . . [3 pts] - FAILED
+parser_extra_numbers  . . . . [3 pts] - FAILED
+parser_unbalanced_parens  . . [3 pts] - FAILED
+parser_no_numbers . . . . . . [3 pts] - FAILED
+parser_unary  . . . . . . . . [3 pts] - FAILED
+parser_parens . . . . . . . . [3 pts] - FAILED
+parser_operator_precedence  . [3 pts] - FAILED
+parser_operator_associativity [3 pts] - FAILED
+parser_unary_binary . . . . . [3 pts] - FAILED
+parser_complex  . . . . . . . [8 pts] - FAILED
+
+
+Total score...
+================================================================
+TOTAL SCORE: 57
+
