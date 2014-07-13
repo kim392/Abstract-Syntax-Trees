@@ -82,7 +82,7 @@ const T& circ_array<T>::operator[](uint64_t idx) const
 template <class T>
 T& circ_array<T>::operator[](uint64_t idx)
 {
-	int x = idx + first_;
+	uint64_t x = idx + first_;
 	if(x >= capacity)
 	     x= x%capacity;
 	return arr_[x];	

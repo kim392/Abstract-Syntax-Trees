@@ -33,7 +33,7 @@ void stack<T>::push(const T& elem)
 template <class T>
 void stack<T>::push(T&& elem)
 {
-    arr_.push_back(elem);
+    arr_.push_back(std::move(elem));
     /// @todo mp_parse.2
 }
 

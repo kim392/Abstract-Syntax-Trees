@@ -8,6 +8,4 @@ double uplus::compute(double val) const
     return val;
 }
 
-
-
 }
