@@ -5,6 +5,7 @@
  */
 
 #include <cassert>
+#include <iostream>
 #include "parser.h"
 #include "operation.h"
 #include "number.h"
@@ -95,15 +96,13 @@ std::unique_ptr<node> parser::parse(queue<std::unique_ptr<token>>& tokens)
 	}
         tokens.pop();
     }
-
-    while(!ops_.empty()) //2nd while loop (new loop)
-	{
-	if(ops_.top()->text().front() == '(' || ops_.top()->text().front() == ')')
-		throw std::runtime_error{"hahahha"};
+    while(!ops_.empty()) 
+    {
+//	if(ops_.top()->text().front() == '(' || ops_.top()->text().front() == ')')
+//		throw std::runtime_error{"hahahha"};
 	qu_.push(std::move(ops_.top()));
 	ops_.pop();
-	}
-
+    }
     while(!qu_.empty())
     {
 	    auto& tok = qu_.front();
@@ -118,9 +117,9 @@ std::unique_ptr<node> parser::parse(queue<std::unique_ptr<token>>& tokens)
 	    else if(tok->type() == token_type::OPERATION)
 	    {
 		    uint32_t n = qu_.front()->as_operation()->args();
-		    if(qu_.size() < n)
-			    throw std::runtime_error{"insufficient value"};
-		    else
+//		    if(qu_.size() < n)
+//			    throw std::runtime_error{"insufficient value"};
+//		    else
 		    {
 			    if(n==2)
 			    {
@@ -142,6 +141,7 @@ std::unique_ptr<node> parser::parse(queue<std::unique_ptr<token>>& tokens)
 				nodes_.push(std::move(unop));
 			    }
 		    }
+		    qu_.pop();
            }
     }
 
