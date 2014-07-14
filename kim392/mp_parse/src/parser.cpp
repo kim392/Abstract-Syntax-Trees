@@ -128,7 +128,7 @@ std::unique_ptr<node> parser::parse(queue<std::unique_ptr<token>>& tokens)
 				    std::unique_ptr<node> right = std::move(nodes_.top());
 				    nodes_.pop();
 				    std::string op = tok->text();
-				    std::unique_ptr<node> binop = make_binary_op(op, std::move(left), std::move(right));
+				    std::unique_ptr<node> binop = make_binary_op(op, std::move(right), std::move(left));
 				    nodes_.push(std::move(binop));
 			    }
 
