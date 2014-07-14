@@ -151,7 +151,7 @@ void circ_array<T>::push_front(const T& elem)
 template <class T>
 void circ_array<T>::push_front(T&& elem)
 {
-    if((first_==0 && last_ == capacity-1) || (first_-1==last_) || (size_ == capacity))
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
 	resize();
     if(first_ == 0)
     {
@@ -167,14 +167,10 @@ void circ_array<T>::push_front(T&& elem)
     }
 }
 
-
-
-
-
 template <class T>
 void circ_array<T>::push_back(const T& elem)
 {
-    if((first_==0 && last_ == capacity-1) || (first_-1==last_) || size_==capacity)
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */size_==capacity)
         resize();
     if(last_ == capacity-1)
     {
@@ -194,7 +190,7 @@ template <class T>
 void circ_array<T>::push_back(T&& elem)
 {
 
-    if((first_==0 && last_ == capacity-1) || (first_-1==last_) || size_==capacity)
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */size_==capacity)
         resize();
     if(last_ == capacity-1)
     {
