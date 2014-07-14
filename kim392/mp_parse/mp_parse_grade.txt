@@ -1,7 +1,7 @@
 Monad Autograder
-Testing mp_parse at 2014-07-12 23:34:50
+Testing mp_parse at 2014-07-13 23:38:19
 
-"On two occasions, I have been asked [by members of Parliament], 'Pray, Mr. Babbage, if you put into the machine wrong figures, will the right answers come out?' I am not able to rightly apprehend the kind of confusion of ideas that could provoke such a question." ~ Charles Babbage
+"Simplicity and elegance are unpopular because they require hard work and discipline to achieve and education to be appreciated." ~ Edsger Dijkstra
 
 Setting up test environment...
 Compiling...
@@ -54,7 +54,46 @@ unit_tests.cpp:264:14: note: in instantiation of member function 'cs225::circ_ar
                       ^
 In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:183:
-include/circ_array.tcc:238:27: warning: comparison of integers of different signs: 'uint64_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+unit_tests.cpp:273:7: note: in instantiation of member function 'cs225::circ_array<char>::push_front' requested here
+    a.push_front('a');
+      ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+unit_tests.cpp:290:11: note: in instantiation of member function 'cs225::circ_array<int>::push_front' requested here
+        a.push_front(i * 3 + 12);
+          ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+unit_tests.cpp:331:9: note: in instantiation of member function 'cs225::circ_array<move_counter>::push_front' requested here
+    arr.push_front(move_counter{});
+        ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+include/circ_array.tcc:234:27: warning: comparison of integers of different signs: 'uint64_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
     if(idx < size_ || idx > -1)
                       ~~~ ^ ~~
 unit_tests.cpp:395:9: note: in instantiation of member function 'cs225::circ_array<int>::erase' requested here
@@ -62,22 +101,64 @@ unit_tests.cpp:395:9: note: in instantiation of member function 'cs225::circ_arr
         ^
 In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:183:
-include/circ_array.tcc:241:10: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:237:10: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
     if(x >= size_)
        ~ ^  ~~~~~
-include/circ_array.tcc:249:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:245:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
         for(int i = 0; i <= size_; i++)
                        ~ ^  ~~~~~
-include/circ_array.tcc:261:24: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:257:24: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
         for(int i = first_; i < capacity; i++)
                             ~ ^ ~~~~~~~~
-include/circ_array.tcc:267:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:263:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
         for(int i = 0; i <= last_; i++)
                        ~ ^  ~~~~~
-include/circ_array.tcc:278:34: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:274:34: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
     else if(first_ == last_ && x == first_)
                                ~ ^  ~~~~~~
-11 warnings generated.
+14 warnings generated.
+In file included from src/lex.cpp:8:
+In file included from include/lex.h:11:
+In file included from include/queue.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+include/queue.tcc:33:10: note: in instantiation of member function 'cs225::circ_array<std::__1::unique_ptr<cs225::token, std::__1::default_delete<cs225::token> > >::push_front' requested here
+    arr_.push_front(std::move(elem));
+         ^
+src/lex.cpp:32:16: note: in instantiation of member function 'cs225::queue<std::__1::unique_ptr<cs225::token, std::__1::default_delete<cs225::token> > >::push' requested here
+        tokens.push(std::move(tok));
+               ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+1 warning generated.
+In file included from src/parser.cpp:9:
+In file included from include/parser.h:12:
+In file included from include/queue.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+include/queue.tcc:33:10: note: in instantiation of member function 'cs225::circ_array<std::__1::unique_ptr<cs225::token, std::__1::default_delete<cs225::token> > >::push_front' requested here
+    arr_.push_front(std::move(elem));
+         ^
+src/parser.cpp:68:8: note: in instantiation of member function 'cs225::queue<std::__1::unique_ptr<cs225::token, std::__1::default_delete<cs225::token> > >::push' requested here
+                        qu_.push(std::move(ops_.top()));
+                            ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+1 warning generated.
 In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:183:
 include/circ_array.tcc:106:7: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
@@ -126,7 +207,46 @@ unit_tests.cpp:264:14: note: in instantiation of member function 'cs225::circ_ar
                       ^
 In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:183:
-include/circ_array.tcc:238:27: warning: comparison of integers of different signs: 'uint64_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+unit_tests.cpp:273:7: note: in instantiation of member function 'cs225::circ_array<char>::push_front' requested here
+    a.push_front('a');
+      ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+unit_tests.cpp:290:11: note: in instantiation of member function 'cs225::circ_array<int>::push_front' requested here
+        a.push_front(i * 3 + 12);
+          ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+unit_tests.cpp:331:9: note: in instantiation of member function 'cs225::circ_array<move_counter>::push_front' requested here
+    arr.push_front(move_counter{});
+        ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+include/circ_array.tcc:234:27: warning: comparison of integers of different signs: 'uint64_t' (aka 'unsigned long') and 'int' [-Wsign-compare]
     if(idx < size_ || idx > -1)
                       ~~~ ^ ~~
 unit_tests.cpp:395:9: note: in instantiation of member function 'cs225::circ_array<int>::erase' requested here
@@ -134,22 +254,64 @@ unit_tests.cpp:395:9: note: in instantiation of member function 'cs225::circ_arr
         ^
 In file included from unit_tests.cpp:62:
 In file included from include/circ_array.h:183:
-include/circ_array.tcc:241:10: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:237:10: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
     if(x >= size_)
        ~ ^  ~~~~~
-include/circ_array.tcc:249:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:245:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
         for(int i = 0; i <= size_; i++)
                        ~ ^  ~~~~~
-include/circ_array.tcc:261:24: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:257:24: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
         for(int i = first_; i < capacity; i++)
                             ~ ^ ~~~~~~~~
-include/circ_array.tcc:267:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:263:19: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
         for(int i = 0; i <= last_; i++)
                        ~ ^  ~~~~~
-include/circ_array.tcc:278:34: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
+include/circ_array.tcc:274:34: warning: comparison of integers of different signs: 'int' and 'uint64_t' (aka 'unsigned long') [-Wsign-compare]
     else if(first_ == last_ && x == first_)
                                ~ ^  ~~~~~~
-11 warnings generated.
+14 warnings generated.
+In file included from src/lex.cpp:8:
+In file included from include/lex.h:11:
+In file included from include/queue.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+include/queue.tcc:33:10: note: in instantiation of member function 'cs225::circ_array<std::__1::unique_ptr<cs225::token, std::__1::default_delete<cs225::token> > >::push_front' requested here
+    arr_.push_front(std::move(elem));
+         ^
+src/lex.cpp:32:16: note: in instantiation of member function 'cs225::queue<std::__1::unique_ptr<cs225::token, std::__1::default_delete<cs225::token> > >::push' requested here
+        tokens.push(std::move(tok));
+               ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+1 warning generated.
+In file included from src/parser.cpp:9:
+In file included from include/parser.h:12:
+In file included from include/queue.h:10:
+In file included from include/circ_array.h:183:
+include/circ_array.tcc:154:78: warning: equality comparison with extraneous parentheses [-Wparentheses-equality]
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                       ~~~~~~^~~~~~~~~~~
+include/queue.tcc:33:10: note: in instantiation of member function 'cs225::circ_array<std::__1::unique_ptr<cs225::token, std::__1::default_delete<cs225::token> > >::push_front' requested here
+    arr_.push_front(std::move(elem));
+         ^
+src/parser.cpp:68:8: note: in instantiation of member function 'cs225::queue<std::__1::unique_ptr<cs225::token, std::__1::default_delete<cs225::token> > >::push' requested here
+                        qu_.push(std::move(ops_.top()));
+                            ^
+include/circ_array.tcc:154:78: note: remove extraneous parentheses around the comparison to silence this warning
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                      ~      ^          ~
+include/circ_array.tcc:154:78: note: use '=' to turn this equality comparison into an assignment
+    if(/*(first_==0 && last_ == capacity-1) || (first_-1==last_) || */(size_ == capacity))
+                                                                             ^~
+                                                                             =
+1 warning generated.
 
 
 Running tests...
@@ -165,22 +327,22 @@ circ_const_subscript  . . . . [2 pts] - passed
 circ_const_at . . . . . . . . [2 pts] - passed
 circ_push_front . . . . . . . [2 pts] - passed
 circ_push_front_many  . . . . [2 pts] - passed
-circ_push_back  . . . . . . . [2 pts] - passed
+circ_push_back  . . . . . . . [2 pts] - FAILED
 circ_push_back_many . . . . . [2 pts] - passed
 circ_push_front_move  . . . . [2 pts] - passed
 circ_push_back_move . . . . . [2 pts] - passed
 circ_pop_front  . . . . . . . [2 pts] - passed
 circ_pop_back . . . . . . . . [2 pts] - passed
 circ_erase_1  . . . . . . . . [3 pts] - passed
-circ_erase_2  . . . . . . . . [3 pts] - FAILED
-circ_weird_copy_ctor  . . . . [1 pts] - FAILED
+circ_erase_2  . . . . . . . . [3 pts] - passed
+circ_weird_copy_ctor  . . . . [1 pts] - passed
 stack_empty . . . . . . . . . [1 pts] - passed
-stack_push_top  . . . . . . . [1 pts] - FAILED
-stack_push_and_pop  . . . . . [1 pts] - passed
-stack_top_const . . . . . . . [1 pts] - FAILED
+stack_push_top  . . . . . . . [1 pts] - passed
+stack_push_and_pop  . . . . . [1 pts] - FAILED
+stack_top_const . . . . . . . [1 pts] - passed
 stack_push_move . . . . . . . [1 pts] - passed
-stack_memory (asan) . . . . . [1 pts] - passed
-stack_push_amortized_constant [1 pts] - FAILED
+stack_memory (asan) . . . . . [1 pts] - FAILED
+stack_push_amortized_constant [1 pts] - passed
 queue_empty . . . . . . . . . [1 pts] - passed
 queue_push_front  . . . . . . [1 pts] - passed
 queue_push_and_pop  . . . . . [1 pts] - passed
@@ -197,12 +359,12 @@ ast_binary_minus  . . . . . . [1 pts] - passed
 ast_binary_plus . . . . . . . [1 pts] - passed
 ast_times . . . . . . . . . . [1 pts] - passed
 ast_complex (asan)  . . . . . [3 pts] - passed
-parser_plus . . . . . . . . . [1 pts] - FAILED
+parser_plus . . . . . . . . . [1 pts] - passed
 parser_extra_ops  . . . . . . [3 pts] - FAILED
 parser_extra_numbers  . . . . [3 pts] - FAILED
 parser_unbalanced_parens  . . [3 pts] - FAILED
 parser_no_numbers . . . . . . [3 pts] - FAILED
-parser_unary  . . . . . . . . [3 pts] - FAILED
+parser_unary  . . . . . . . . [3 pts] - passed
 parser_parens . . . . . . . . [3 pts] - FAILED
 parser_operator_precedence  . [3 pts] - FAILED
 parser_operator_associativity [3 pts] - FAILED
@@ -212,5 +374,5 @@ parser_complex  . . . . . . . [8 pts] - FAILED
 
 Total score...
 ================================================================
-TOTAL SCORE: 57
+TOTAL SCORE: 64
 
